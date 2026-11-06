@@ -24,4 +24,11 @@ def add_expenses(amount, category, comment):
     expenses.append(parametrs)
     save_expenses(expenses)
 #add_expenses(300, "еда", "обед") - example
-print(load_expenses())
+
+def list_expenses():
+    expenses = load_expenses()
+    if not expenses:
+        return print("список пуст")
+    for number, expense in enumerate(expenses, start=1):
+        print(f"{number}. {expense['date']} | {expense['category']} | {expense['amount']}  | {expense['comment']} ")
+list_expenses()
