@@ -1,7 +1,7 @@
 import json #cловарь и тп
 import datetime #время
 from pathlib import Path # представляет путь к файлу и умеет его проверять и открывать.
-from unicodedata import category
+
 
 FILE = Path("expenses.json") #Создаёт объект пути к файлу expenses.json и кладёт его в переменную FILE.
 
@@ -20,15 +20,16 @@ def save_expenses(expenses):
 
 def add_expenses(amount, category, comment):
     expenses = load_expenses()
-    parametrs = {"amount": amount, "category": category, "comment": comment, "date":datetime.date.today().isoformat()}
-    expenses.append(parametrs)
+    parameters = {"amount": amount, "category": category, "comment": comment, "date":datetime.date.today().isoformat()}
+    expenses.append(parameters)
     save_expenses(expenses)
-#add_expenses(300, "еда", "обед") - example
+
 
 def list_expenses():
     expenses = load_expenses()
     if not expenses:
-        return print("список пуст")
+         (print("список пуст"))
+         return
     for number, expense in enumerate(expenses, start=1):
         print(f"{number}. {expense['date']} | {expense['category']} | {expense['amount']}  | {expense['comment']} ")
 list_expenses()
